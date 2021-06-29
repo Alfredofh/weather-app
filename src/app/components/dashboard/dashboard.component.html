@@ -4,10 +4,17 @@
             <img [src]="urlImagen" alt="imagen clima" width="300px" height="300px">
         </div>
         <div class="col-lg-6">
-            <input type="text" class="form-control form-control-lg size" placeholder="Introduce La Ciudad">
-            <button class="btn btn-primary btn-lg btn-block mt-4 size">Enviar</button>
+            <input type="text" [(ngModel)]="ciudad" class="form-control form-control-lg size"
+                placeholder="Introduce La Ciudad">
+            <button (click)="obtenerClima()" class="btn btn-primary btn-lg btn-block mt-4 size"
+                [disabled]="ciudad == '' ">Enviar</button>
+            <div class="card mt-3">
+                <div class="card-body">
+                    <p> <strong>Temperatura:</strong></p>
+                    <p><strong>Humedad:</strong></p>
+                    <p><strong>Clima:</strong></p>
+                </div>
+            </div>
         </div>
     </div>
-
-
 </div>
