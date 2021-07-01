@@ -8,11 +8,17 @@
                 placeholder="Introduce La Ciudad">
             <button (click)="obtenerClima()" class="btn btn-primary btn-lg btn-block mt-4 size"
                 [disabled]="ciudad == '' ">Enviar</button>
+
+            <div *ngIf="loading" class="text-center mt-3">
+                <div class="spinner-border text-primary" role="status"></div>
+                <div class="spinner-border text-primary" role="status"></div>
+                <div class="spinner-border text-primary" role="status"></div>
+            </div>
             <div class="card mt-3">
                 <div class="card-body">
-                    <p> <strong>Temperatura:</strong></p>
-                    <p><strong>Humedad:</strong></p>
-                    <p><strong>Clima:</strong></p>
+                    <p> <strong>Temperatura:</strong>{{ temperatura | number : '1.2-2' }} ºC</p>
+                    <p><strong>Humedad:</strong>{{ humedad }} %</p>
+                    <p><strong>Clima:</strong>{{ clima }} </p>
                 </div>
             </div>
         </div>
