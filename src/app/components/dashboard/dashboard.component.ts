@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit {
   humedad: 0;
   clima: "";
   query = false;
+  mostrarError = false;
   constructor(private _climaService: ClimaService) { }
 
   ngOnInit(): void {
@@ -30,8 +31,19 @@ export class DashboardComponent implements OnInit {
       this.temperatura = data.main.temp - 273;
       this.humedad = data.main.humidity;
       this.clima = data.weather[0].description;
-      console.log(data);
+    }, error => {
+      console.log(error);
 
+      this.loading = false;
+      this.error();
     });
+  }
+
+  error() {
+    this.mostrarError = true;
+    setTimeout(() => {
+      this.mostrarError = false;
+      this.ciudad = "";
+    }, 3000)
   }
 }
