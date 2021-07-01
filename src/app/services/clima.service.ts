@@ -1,18 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClimaService {
-  url = "api.openweathermap.org/data/2.5/weather?&appid=";
-  key = "0fadd3f3d074890c1916d9a05a841b08";
+  url = "http://api.openweathermap.org/data/2.5/weather?&appid=";
+  key = "0900af5a2e17471e0b1dea4e06d91faa";
   constructor(private http: HttpClient) { }
 
 
 
-  getClima(ciudad: string): Promise<any> {
-    const URL = this.url + this.key + "&appid=" + ciudad;
-    return this.http.get(URL).toPromise();
+  getClima(ciudad: string): Observable<any> {
+    const URL = this.url + this.key + '&q=' + ciudad;
+    return this.http.get(URL);
   };
 }

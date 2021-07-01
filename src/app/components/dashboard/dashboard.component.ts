@@ -17,13 +17,9 @@ export class DashboardComponent implements OnInit {
 
 
   obtenerClima() {
-
-
-    this._climaService.getClima(this.ciudad)
-      .then(response => {
-        console.log(this.ciudad);
-        this.ciudad = response;
-      })
-      .catch(error => console.log(error));
+    console.log(this.ciudad);
+    this._climaService.getClima(this.ciudad).subscribe(data => {
+      console.log(data);
+    })
   }
 }
